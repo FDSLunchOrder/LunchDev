@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_id: 1
+  dtime: 2015-10-03 13:51:02
+  food_id: 1
+  remark: MyString
+
+two:
+  account_id: 1
+  dtime: 2015-10-03 13:51:02
+  food_id: 1
+  remark: MyString

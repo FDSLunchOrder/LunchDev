@@ -1,0 +1,15 @@
+class CreateRestaurants < ActiveRecord::Migration
+  def change
+    create_table :restaurants do |t|
+      t.string :name
+      t.boolean :active, default: 1
+      t.string :email
+      t.string :address
+      t.string :phone1
+      t.string :phone2
+      t.string :fax
+
+      t.timestamps null: false
+    end
+  end
+end

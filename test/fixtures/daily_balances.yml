@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cal_balance: 1.5
+  adjustment: 1.5
+  remark: MyString
+
+two:
+  cal_balance: 1.5
+  adjustment: 1.5
+  remark: MyString
