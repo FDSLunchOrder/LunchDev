@@ -4,7 +4,7 @@ class CookiesController < ApplicationController
   end
   def login
 
-    account = Account.find_by(login: params[:session][:login].downcase)
+    account = Account.find_by(login: params[:cookies][:login].downcase)
     if account
       log_in(account)
       if account.user_gp == 0

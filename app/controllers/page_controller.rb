@@ -13,4 +13,6 @@ class PageController < ApplicationController
       redirect_to root_url
     end
   end
+  def guest
+  end
 end

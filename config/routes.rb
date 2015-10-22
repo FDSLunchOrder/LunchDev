@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   get    'login'   => 'cookies#new'
   post    'login'   => 'cookies#login'
   delete 'logout'  => 'cookies#destroy'
-  get 'sessions/guest'  => 'cookies#guest'
 
   get 'page/admin' => 'page#admin'
   get 'page/login' => 'page#login'
+  get 'page/guest' => 'page#guest'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
