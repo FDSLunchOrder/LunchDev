@@ -1,0 +1,37 @@
+div {
+    display: block;
+}
+html, body {
+    background: url(/assets/Background.png);
+    color: white;
+    background-position: top;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arvo', 'Roboto', cursive;
+    font-size: 16px;
+}
+.header {
+    background: url(/assets/Background.png);
+    height: 160px;
+    color: white;
+    padding-top: 30px;
+    text-align: left;
+}
+.jumbotron{
+    background: url(/assets/bg.jpg) no-repeat center center;
+    background-size: cover;
+    height: 550px;
+}
+.login-pane{
+    color: dimgrey;
+    -webkit-box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.65);
+    padding: 30px;
+}
+.footer {
+    background: url(/assets/Background.png);
+    height: 170px;
+    color: white;
+    padding-top: 20px;
+    text-align: right;
+ }
