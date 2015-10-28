@@ -1,1 +1,22 @@
-u are guest
+<% provide(:title, "Guest Log in") %>
+
+<div class="row">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="col-md-4 col-md-offset-8 login-pane">
+        <%= form_tag("/cookies/guestLogin", method: "get") do %>
+            <h3><%= label_tag :firstname, "First Name" %></h3>
+            <%= text_field_tag :firstname %>
+            <br>
+            <h3><%= label_tag :lastname, "Last Name" %></h3>
+            <%= text_field_tag :lastname %>
+            <br>
+            <h3><%= label_tag :floor, "Floor" %></h3>
+            <%= text_field_tag :floor %>
+            <br>
+            <%= submit_tag "Log in", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

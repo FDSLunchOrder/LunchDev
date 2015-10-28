@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'orders/create'
+
+  get 'orders/new'
+
+  get 'orders/destroy'
+
+  get 'orders/show'
+
   root 'cookies#new'
 
   resources :account
@@ -11,6 +19,7 @@ Rails.application.routes.draw do
   get    'login'   => 'cookies#new'
   post    'login'   => 'cookies#login'
   delete 'logout'  => 'cookies#destroy'
+  get 'cookies/guestLogin' => 'cookies#guestLogin'
 
   get 'page/admin' => 'page#admin'
   get 'page/login' => 'page#login'
