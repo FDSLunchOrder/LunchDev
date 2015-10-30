@@ -1,0 +1,20 @@
+<%= form_for @account, :url => { :controller => 'account', :action => 'create' } do |f| %>
+    <font color="black">
+    <p><%= f.label :first_name, "First Name" %></p>
+    <%= f.text_field :first_name %>
+
+    <p><%= f.label :last_name, "Last Name" %></p>
+    <%= f.text_field :last_name %>
+
+    <p><%= f.label :location, "Location" %></p>
+    <%= f.text_field :location %>
+
+    <p><%= f.label :login, "Login" %></p>
+    <%= f.text_field :login %>
+
+    <p><%= f.label :user_gp, "User Group" %></p>
+    <%= f.text_field :user_gp %>
+
+    <p> <%= f.submit "Create" %></p>
+    </font>
+<% end %>

@@ -1,0 +1,11 @@
+<ul>
+  <% @account.each do |account| %>
+      <li>
+        <p><%= account.first_name %> <%= account.last_name %></p>
+        <%= link_to 'Show', :controller => 'account', :action => 'show', :id => account %>
+        <%= link_to 'Edit', :controller => 'account', :action => 'edit', :id => account %>
+        <%= link_to 'Delete', :controller => 'account', :action => 'delete', :id => account %>
+      </li>
+  <% end %>
+</ul>
+<%= link_to 'New Account', :controller => 'account', :action => 'new' %>

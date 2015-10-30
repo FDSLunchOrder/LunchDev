@@ -1,0 +1,15 @@
+<%= form_for @account, :url => { :controller => 'account', :action => 'update', :id => @account } do |f| %>
+    <p><%= f.label :first_name, "First Name" %></p>
+    <%= f.text_field :first_name %>
+
+    <p><%= f.label :last_name, "Last Name" %></p>
+    <%= f.text_field :last_name %>
+
+    <p><%= f.label :location, "Location" %></p>
+    <%= f.text_field :location %>
+
+    <p><%= f.label :login, "Login" %></p>
+    <%= f.text_field :login %>
+
+    <%= f.submit "Update" %>
+<% end %>

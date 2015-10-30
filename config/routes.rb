@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'page/login' => 'page#login'
   get 'page/guest' => 'page#guest'
 
+  match ':controller(/:action(/:id(.:format)))', :via => :all
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
