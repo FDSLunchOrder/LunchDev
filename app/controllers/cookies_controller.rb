@@ -22,10 +22,12 @@ class CookiesController < ApplicationController
         render 'new'
     end
   end
+
   def destroy
     log_out
     redirect_to root_url
   end
+
   def guestLogin
     guest = Account.create(:first_name => params[:firstname], :last_name =>  params[:lastname], :location => params[:floor], :user_gp => 2)
     log_in(guest)
