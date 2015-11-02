@@ -1,0 +1,32 @@
+<h1>Edit Account</h1>
+
+<%= form_for @account do |f| %>
+
+
+    <p>
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :location %><br />
+      <%= f.text_field :location %>
+    </p>
+    <p>
+      <%= f.label :login %><br />
+      <%= f.text_field :login %>
+    </p>
+    <p>
+      <%= f.label :user_gp %><br />
+      <%= f.text_field :user_gp %>
+    </p>
+    <p>
+      <%= f.submit "Update" %>
+    </p>
+<% end %>
+
+<%= link_to 'Show', @account %> |
+<%= link_to 'Back', accounts_path %>

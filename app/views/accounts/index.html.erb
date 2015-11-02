@@ -1,0 +1,32 @@
+<h1>Listing Users</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Location</th>
+    <th>Login</th>
+    <th>Active</th>
+    <th>User Group</th>
+    <th>Last Updated Time</th>
+  </tr>
+
+  <% for account in @accounts %>
+      <tr>
+        <td><%=h account.first_name %></td>
+        <td><%=h account.last_name %></td>
+        <td><%=h account.location %></td>
+        <td><%=h account.login %></td>
+        <td><%=h account.active %></td>
+        <td><%=h account.user_gp %></td>
+        <td><%=h account.updated_at %></td>
+        <td><%= link_to 'Show', account %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Destroy', account_path(account), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Account', new_account_path %>

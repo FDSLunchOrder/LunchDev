@@ -1,0 +1,38 @@
+<p>
+  <b>First Name:</b>
+  <%=h @account.first_name %>
+</p>
+
+<p>
+  <b>Last Name:</b>
+  <%=h @account.last_name %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @account.login %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @account.location %>
+</p>
+
+<p>
+  <b>User Group:</b>
+  <%=h @account.user_gp %>
+</p>
+
+<p>
+  <b>User GroupActive:</b>
+  <%=h @account.active %>
+</p>
+
+<p>
+  <b>Last Updated:</b>
+  <%=h @account.updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
