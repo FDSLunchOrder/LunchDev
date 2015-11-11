@@ -212,6 +212,8 @@
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.2.3, ruby-2.1.6-p336) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.4.2, ruby-2.1.6-p336) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.2.0, ruby-2.1.6-p336) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="roo (v2.2.0, ruby-2.1.6-p336) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v1.1.7, ruby-2.1.6-p336) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.18, ruby-2.1.6-p336) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.4, ruby-2.1.6-p336) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sdoc (v0.4.1, ruby-2.1.6-p336) [gem]" level="application" />

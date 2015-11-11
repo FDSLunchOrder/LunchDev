@@ -20,9 +20,9 @@
         <td><%=h account.active %></td>
         <td><%=h account.user_gp %></td>
         <td><%=h account.updated_at %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= button_to 'Destroy', account_path(account), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= button_to 'Show', account, :method => :get %></td>
+        <td><%= button_to 'Edit', edit_account_path(account), :method => :get %></td>
+        <td><%= button_to 'Destroy', account_path(account), :confirm =>  'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>

@@ -45,3 +45,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
+
+gem 'roo'
