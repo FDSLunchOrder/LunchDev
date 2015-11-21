@@ -1,2 +1,53 @@
-<%= @account.first_name + ' ' + @account.last_name%><br>
-Welcome, you can make order here!
+<div></div>
+Welcome <%= @account.first_name + ' ' + @account.last_name%>, you can make order here!
+<br><br>
+Current Order:
+<% if @orders %>
+    <table>
+      <tr>
+        <th>Restaurant</th>
+        <th>English name</th>
+        <th>Chinese name</th>
+        <th>Price</th>
+      </tr>
+
+      <% for order in @orders %>
+          <tr>
+            <td><%=h order.food.restaurant.name %></td>
+            <td><%=h order.food.name %></td>
+            <td><%=h order.food.name2 %></td>
+            <td><%=h order.food.price %></td>
+            <td><%= button_to 'Delete', order_path(order), :method => :delete %></td>
+          </tr>
+      <% end %>
+    </table>
+    <% if @orderedFood.sum(:price)>80 %>
+        <span style="color:red">Sum: <%= @orderedFood.sum(:price) %></span><br>
+    <% else %>
+        Sum: <%= @orderedFood.sum(:price) %><br>
+    <% end %>
+<% else %>
+    <br>You have not yet order today!<br>
+<% end %>
+<br>
+Add food:
+<table>
+  <tr>
+    <th>Restaurant</th>
+    <th>English name</th>
+    <th>Chinese name</th>
+    <th>Price</th>
+  </tr>
+
+  <% for food in @foods %>
+      <tr>
+        <td><%=h food.restaurant.name %></td>
+        <td><%=h food.name %></td>
+        <td><%=h food.name2 %></td>
+        <td><%=h food.price %></td>
+        <td><%= button_to 'Add', orders_path(food), :method => :post %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />

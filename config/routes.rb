@@ -1,21 +1,12 @@
 Rails.application.routes.draw do
 
-
-  get 'orders/create'
-
-  get 'orders/new'
-
-  get 'orders/destroy'
-
-  get 'orders/show'
-
   root 'cookies#new'
 
   resources :accounts
-  resources :daily_balance
-  resources :food
-  resources :order
-  resources :restaurant
+  resources :daily_balances
+  resources :foods
+  resources :orders
+  resources :restaurants
 
   get    'login'   => 'cookies#new'
   post    'login'   => 'cookies#login'
@@ -25,9 +16,6 @@ Rails.application.routes.draw do
   get 'page/admin' => 'page#admin'
   get 'page/login' => 'page#login'
   get 'page/guest' => 'page#guest'
-
-
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
