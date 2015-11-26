@@ -68,6 +68,11 @@ class AccountsController < ApplicationController
 
   end
 
+  def import
+    Account.import(params[:file])
+    redirect_to accounts_url, notice: "Accounts imported."
+  end
+
   private
 
   def account_params
@@ -76,6 +81,10 @@ class AccountsController < ApplicationController
 
   def find_account
     @account = Account.find(params[:id])
+  end
+
+  def accessible_attributes
+    ["first_name", "last_name", "location", "login", "user_gp","active"]
   end
 
   end

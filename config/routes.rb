@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   root 'cookies#new'
 
-  resources :accounts
+  resources :accounts do
+    collection { post :import }
+  end
+  resources :daily_balance
+  resources :food
+  resources :order
+  resources :restaurant
   resources :daily_balances
   resources :foods
   resources :orders
