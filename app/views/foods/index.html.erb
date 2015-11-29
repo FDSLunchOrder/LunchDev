@@ -1,0 +1,45 @@
+<h1>Food Menu</h1>
+
+<p>
+  Download:
+  <%= link_to "CSV", foods_path(format: "csv") %> |
+  <%= link_to "Excel", foods_path(format: "xls") %>
+</p>
+
+<table>
+  <tr>
+    <th>Restaurant ID</th>
+    <th>English Name</th>
+    <th>Chinese Name</th>
+    <th>Price</th>
+    <th>Active</th>
+    <th>Add-on Price</th>
+    <th>Set item flag</th>
+  </tr>
+
+  <% for food in @foods %>
+      <tr>
+        <td><%=h food.restaurant_id %></td>
+        <td><%=h food.name %></td>
+        <td><%=h food.name2 %></td>
+        <td><%=h food.price %></td>
+        <td><%=h food.active %></td>
+        <td><%=h food.price2 %></td>
+        <td><%=h food.foodType_id %></td>
+        <td><%= button_to 'Show', food, :method => :get %></td>
+        <td><%= button_to 'Edit', edit_food_path(food), :method => :get %></td>
+        <td><%= button_to 'Destroy', food_path(food), :confirm =>  'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Food', new_food_path %>
+
+<h2>Import Food Menu</h2>
+
+<%= form_tag import_foods_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<% end %>

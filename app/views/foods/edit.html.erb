@@ -1,0 +1,38 @@
+<h1>New Food</h1>
+
+<%= form_for @food do |f| %>
+
+
+    <p>
+      <%= f.label "Restaurant ID" %><br />
+      <%= f.text_field :restaurant_id %>
+    </p>
+    <p>
+      <%= f.label "English Name" %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label "Chinese Name" %><br />
+      <%= f.text_field :name2 %>
+    </p>
+    <p>
+      <%= f.label "Price" %><br />
+      <%= f.text_field :price %>
+    </p>
+    <p>
+      <%= f.label "Set Menu Price" %><br />
+      <%= f.text_field :price2 %>
+    </p>
+
+    <p>
+      <%= f.label "Set Menu Flag" %><br />
+      <%= f.text_field :foodType_id %>
+    </p>
+
+    <p>
+      <%= f.submit "Update" %>
+    </p>
+<% end %>
+
+<%= link_to 'Show', @food %> |
+<%= link_to 'Back', foods_path %>

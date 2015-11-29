@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121084243) do
+ActiveRecord::Schema.define(version: 20151127103536) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "first_name",    limit: 4000
@@ -37,14 +37,20 @@ ActiveRecord::Schema.define(version: 20151121084243) do
 
   add_index "daily_balances", ["date"], name: "index_daily_balances_on_date", unique: true
 
+  create_table "foodTypes", force: :cascade do |t|
+    t.string "name", limit: 4000
+  end
+
   create_table "foods", force: :cascade do |t|
     t.integer  "restaurant_id", limit: 4
     t.string   "name",          limit: 4000
     t.string   "name2",         limit: 4000
     t.boolean  "active",                     default: true
-    t.float    "price",                                     null: false
+    t.float    "price"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.float    "price2"
+    t.integer  "foodType_id",   limit: 4
   end
 
   create_table "orders", force: :cascade do |t|

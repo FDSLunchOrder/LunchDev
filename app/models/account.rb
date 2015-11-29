@@ -4,6 +4,15 @@ class Account < ActiveRecord::Base
   has_many :orders
   has_many :foods, through: :orders
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |account|
+        csv << account.attributes.values_at(*column_names)
+        end
+      end
+  end
+
   def self.import(file)
     accessible_attributes = ["first_name", "last_name", "location", "login", "user_gp","active"]
     spreadsheet = open_spreadsheet(file)

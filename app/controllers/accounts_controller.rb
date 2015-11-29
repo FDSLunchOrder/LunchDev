@@ -4,15 +4,19 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.all
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @accounts.to_csv}
+      format.xls {send_data @accounts.to_csv(col_sep: "\t") }
+    end
   end
 
   def show
-
     respond_to do |format|
       format.html
       format.xml { render :xml => @account }
     end
-
   end
 
   def new

@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   resources :accounts do
     collection { post :import }
   end
-  resources :daily_balance
-  resources :food
-  resources :order
-  resources :restaurant
+
   resources :daily_balances
-  resources :foods
+
+  resources :foods do
+    collection { post :import }
+  end
+
   resources :orders
   resources :restaurants
 

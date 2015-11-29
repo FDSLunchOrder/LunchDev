@@ -1,0 +1,43 @@
+<p>
+  <b>Restaurant ID:</b>
+  <%=h @food.restaurant_id %>
+</p>
+
+<p>
+  <b>English Name:</b>
+  <%=h @food.name %>
+</p>
+
+<p>
+  <b>Chinese Name:</b>
+  <%=h @food.name2 %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @food.price %>
+</p>
+
+<p>
+  <b>Set Menu Price:</b>
+  <%=h @food.price2 %>
+</p>
+
+<p>
+  <b>Set Menu Flag:</b>
+  <%=h @food.foodType_id %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @food.active %>
+</p>
+
+<p>
+  <b>Last Updated:</b>
+  <%=h @food.updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back', foods_path %>

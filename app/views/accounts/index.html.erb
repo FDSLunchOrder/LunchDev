@@ -1,5 +1,11 @@
 <h1>Listing Users</h1>
 
+<p>
+  Download:
+  <%= link_to "CSV", accounts_path(format: "csv") %> |
+  <%= link_to "Excel", accounts_path(format: "xls") %>
+</p>
+
 <table>
   <tr>
     <th>First Name</th>
