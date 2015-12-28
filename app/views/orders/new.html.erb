@@ -9,6 +9,7 @@ Current Order:
         <th>English name</th>
         <th>Chinese name</th>
         <th>Price</th>
+        <th>Remark</th>
       </tr>
 
       <% for order in @orders %>
@@ -17,6 +18,7 @@ Current Order:
             <td><%=h order.food.name %></td>
             <td><%=h order.food.name2 %></td>
             <td><%=h order.food.price %></td>
+            <td><%=h order.remark %></td>
             <td><%= button_to 'Delete', order_path(order), :method => :delete %></td>
           </tr>
       <% end %>
@@ -37,15 +39,22 @@ Add food:
     <th>English name</th>
     <th>Chinese name</th>
     <th>Price</th>
+    <th>Price2</th>
+    <th>Remark</th>
   </tr>
 
   <% for food in @foods %>
       <tr>
-        <td><%=h food.restaurant.name %></td>
-        <td><%=h food.name %></td>
-        <td><%=h food.name2 %></td>
-        <td><%=h food.price %></td>
-        <td><%= button_to 'Add', orders_path(food), :method => :post %></td>
+      <%= form_tag("/orders", method: "post") do %>
+            <td><%= label_tag :restaurantName, food.restaurant.name %></td>
+            <td><%= label_tag :foodName, food.name %></td>
+            <td><%= label_tag :foodName2, food.name2 %></td>
+            <td><%= label_tag :foodPrice, food.price %></td>
+            <td><% if food.price2.to_i > 0 %><%= label_tag :foodPrice2, food.price2 %><% else %>N/A<% end %></td>
+            <td><%= text_field_tag :remark %></td>
+            <td><%= submit_tag "Add", class: "btn btn-primary" %></td>
+            <%= hidden_field_tag :food_id, food.id %>
+      <% end %>
       </tr>
   <% end %>
 </table>
