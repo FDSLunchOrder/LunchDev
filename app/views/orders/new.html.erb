@@ -1,6 +1,7 @@
 <div></div>
 Welcome <%= @account.first_name + ' ' + @account.last_name%>, you can make order here!
 <br><br>
+
 Current Order:
 <% if @orders %>
     <table>
@@ -20,12 +21,15 @@ Current Order:
             <td><%= button_to 'Delete', order_path(order), :method => :delete %></td>
           </tr>
       <% end %>
+      <tr>
+        <td COLSPAN=4><% if @orderedFood.sum(:price)>80 %>
+              <span style="color:red">Sum: <%= @orderedFood.sum(:price) %></span><br>
+          <% else %>
+              Sum: <%= @orderedFood.sum(:price) %><br>
+          <% end %></td>
+      </tr>
     </table>
-    <% if @orderedFood.sum(:price)>80 %>
-        <span style="color:red">Sum: <%= @orderedFood.sum(:price) %></span><br>
-    <% else %>
-        Sum: <%= @orderedFood.sum(:price) %><br>
-    <% end %>
+
 <% else %>
     <br>You have not yet order today!<br>
 <% end %>
