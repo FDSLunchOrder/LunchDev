@@ -1,0 +1,21 @@
+<h1>Listing Orders</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Food ID</th>
+    <th>Remark</th>
+  </tr>
+
+  <% for order in @orders %>
+      <tr>
+        <td><%=h order.account_id%></td>
+        <td><%=h order.date %></td>
+        <td><%=h order.food_id %></td>
+        <td><%=h order.remark %></td>\
+      </tr>
+  <% end %>
+</table>
+
+<br />
+

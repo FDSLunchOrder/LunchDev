@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   require 'roo'
+  require 'roo-xls'
 
   has_many :orders
   has_many :foods, through: :orders

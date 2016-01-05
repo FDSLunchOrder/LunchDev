@@ -10,7 +10,7 @@ default: &default
   pool: 5
   username: philiptest
   password: test
-  host: 172.16.80.99
+  host: 172.16.80.117
   port: 18081
 
 

@@ -25,4 +25,15 @@ class OrdersController < ApplicationController
 
   def show
   end
+
+  def index
+    @orders = Order.where('date = ?', Date.today)
+    @foods = Food.all
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @orders.to_csv}
+      format.xls {send_data @orders.to_csv(col_sep: "\t") }
+    end
+  end
 end
