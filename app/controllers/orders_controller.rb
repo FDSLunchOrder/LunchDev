@@ -27,7 +27,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where('date = ?', Date.today)
+    @account = current_account
+    @orders = Order.where('date = ? and account_id = ?', Date.today, @account.id)
     @foods = Food.all
 
     respond_to do |format|
