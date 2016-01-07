@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127103536) do
+ActiveRecord::Schema.define(version: 20160106072749) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "first_name",    limit: 4000
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20151127103536) do
     t.string   "remark",     limit: 4000
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.float    "priceAdj"
   end
 
   create_table "restaurants", force: :cascade do |t|

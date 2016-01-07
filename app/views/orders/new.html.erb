@@ -17,6 +17,8 @@ Current Order:
         <th>English name</th>
         <th>Chinese name</th>
         <th>Price</th>
+        <th>Price Adjustment</th>
+        <th>Item Total</th>
         <th>Remark</th>
       </tr>
 
@@ -26,15 +28,17 @@ Current Order:
             <td><%=h order.food.name %></td>
             <td><%=h order.food.name2 %></td>
             <td><%=h order.food.price %></td>
+            <td><% if order.priceAdj.to_i > 0 %><%=h order.priceAdj %><% else %>N/A<% end %></td>
+            <td><% if order.priceAdj.to_i > 0 %><%=h order.food.price+order.priceAdj %><% else %><%=h order.food.price %><% end %></td>
             <td><%=h order.remark %></td>
             <td><%= button_to 'Delete', order_path(order), :method => :delete %></td>
           </tr>
       <% end %>
       <tr>
-        <td COLSPAN=4><% if @orderedFood.sum(:price)>80 %>
-              <span style="color:red">Sum: <%= @orderedFood.sum(:price) %></span><br>
+        <td COLSPAN=4><% if @orderedFood.sum(:price)+@orderedFood.sum(:priceAdj)>80 %>
+              <span style="color:red">Sum: <%= @orderedFood.sum(:price)+@orderedFood.sum(:priceAdj) %></span><br>
           <% else %>
-              Sum: <%= @orderedFood.sum(:price) %><br>
+              Sum: <%= @orderedFood.sum(:price)+@orderedFood.sum(:priceAdj) %><br>
           <% end %></td>
       </tr>
     </table>
@@ -52,8 +56,8 @@ Add food:
     <th>English name</th>
     <th>Chinese name</th>
     <th>Price</th>
-    <th>Price2</th>
     <th>Remark</th>
+    <th>Price Adjustment</th>
   </tr>
 
   <% for food in @foods %>
@@ -63,8 +67,8 @@ Add food:
             <td><%= label_tag :foodName, food.name %></td>
             <td><%= label_tag :foodName2, food.name2 %></td>
             <td><%= label_tag :foodPrice, food.price %></td>
-            <td><% if food.price2.to_i > 0 %><%= label_tag :foodPrice2, food.price2 %><% else %>N/A<% end %></td>
             <td><%= text_field_tag :remark %></td>
+            <td><%= text_field_tag :priceAdj %></td>
             <td><%= submit_tag "Add", class: "btn btn-primary" %></td>
             <%= hidden_field_tag :food_id, food.id %>
       <% end %>

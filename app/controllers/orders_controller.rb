@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def create
     if params[:food_id]
-      current_account.orders.create(:date => Date.today, :food_id => params[:food_id], :remark => params[:remark])
+      current_account.orders.create(:date => Date.today, :food_id => params[:food_id], :remark => params[:remark], :priceAdj => params[:priceAdj])
     end
     redirect_to action: "new"
   end
