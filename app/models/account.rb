@@ -35,4 +35,15 @@ class Account < ActiveRecord::Base
     end
   end
 
+  def self.email_alerts
+    all.each do |account|
+      if account.need_reminder == true
+        orderDate = Date.today + 1
+        while (orderDate.wday % 7 == 0) or (orderDate.wday % 7 == 6) do
+          orderDate += 1
+        end
+        UserMailer.alert_email(account, orderDate).deliver_now
+      end
+    end
+  end
 end
