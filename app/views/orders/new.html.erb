@@ -1,5 +1,12 @@
 <div></div>
 Welcome <%= @account.first_name + ' ' + @account.last_name%>, you can make order here!
+
+<%=
+    link_to_if(@account.user_gp == 0,'Back',page_admin_path) do
+      link_to 'Back', page_login_path
+    end
+
+%>
 <br><br>
 
 Current Order:
@@ -39,6 +46,8 @@ Current Order:
 <% else %>
     <br>You have not yet order today!<br>
 <% end %>
+
+
 <br>
 Add food:
 <table>
