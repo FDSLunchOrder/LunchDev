@@ -1,1 +1,1 @@
-rails runner "Account.email.alerts"
+rails runner "Account.email_alerts"
