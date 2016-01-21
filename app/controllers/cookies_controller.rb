@@ -12,6 +12,8 @@ class CookiesController < ApplicationController
           redirect_to page_admin_path
         elsif account.user_gp == 1
           redirect_to page_login_path
+        elsif account.user_gp == 2
+          redirect_to page_login_path
         end
       else
         @err_msg="This account is inactive, please contact admin to activate."
@@ -29,7 +31,9 @@ class CookiesController < ApplicationController
   end
 
   def guestLogin
-    guest = Account.create(:first_name => params[:firstname], :last_name =>  params[:lastname], :location => params[:floor], :user_gp => 2)
+    guest = Account.create(:first_name => params[:firstname], :last_name =>  params[:lastname], :location => params[:floor], :user_gp => 2, :active => 1)
+    guest.login="g"+guest.id.to_s
+    guest.save
     log_in(guest)
     redirect_to new_order_path
   end

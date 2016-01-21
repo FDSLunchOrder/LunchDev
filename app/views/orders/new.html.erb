@@ -1,6 +1,10 @@
 <div></div>
 Welcome <%= @account.first_name + ' ' + @account.last_name%>, you can make order here!
 
+<% if @account.user_gp=2 %>
+    <br><span style="color:red">Since you are using guest account. Please mark down your ID to login again: <%=@account.login%></span><br>
+<% end %>
+
 <%=
     link_to_if(@account.user_gp == 0,'Back',page_admin_path) do
       link_to 'Back', page_login_path
