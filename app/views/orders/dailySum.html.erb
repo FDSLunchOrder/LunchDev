@@ -1,0 +1,28 @@
+<%= link_to 'Back', page_admin_path %>
+<br><br>
+<% for rest in @restaurant %>
+    <%=h rest.name %>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Person</th>
+        <th>Location</th>
+      </tr>
+
+      <% for order in @orders %>
+          <% if order.food.restaurant.id == rest.id %>
+          <tr>
+            <td><% if order.remark != '' %><%=h order.food.name2 %> (<%=h order.remark %>)<% else %><%=h order.food.name2 %><% end %></td>
+            <td><% if order.priceAdj.to_i > 0 %><%=h order.food.price+order.priceAdj %><% else %><%=h order.food.price %><% end %></td>
+            <td><%=h order.account.first_name %> <%=h  order.account.last_name %></td>
+            <td><%=h order.account.location %></td>
+          </tr>
+          <% end %>
+      <% end %>
+      <tr>
+      </tr>
+    </table>
+    Sum: <%= @orderedFood.where('restaurant_id = ?',rest.id).sum(:price)+@orderedFood.where('restaurant_id = ?',rest.id).sum(:priceAdj) %><br>
+    </br>
+<% end %>

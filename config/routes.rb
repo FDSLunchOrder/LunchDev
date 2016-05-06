@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  get 'orders/dailySum' => 'orders#dailySum'
+  get 'orders' => 'orders#index'
   resources :orders
   resources :restaurants
 
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
   get 'page/admin' => 'page#admin'
   get 'page/login' => 'page#login'
   get 'page/guest' => 'page#guest'
-  get 'orders' => 'orders#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

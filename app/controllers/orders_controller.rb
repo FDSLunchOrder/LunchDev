@@ -1,5 +1,19 @@
 class OrdersController < ApplicationController
 
+  def dailySum
+    @restaurant = Restaurant.all
+    @orders = Order.where('date = ?', Date.today).ordered
+    @orderedFood = Order.where('date = ?', Date.today).priced
+  end
+
+  def DlSum
+    @products = Product.order(:name)
+    respond_to do |format|
+      format.html
+      format.csv { render text: @products.to_csv }
+    end
+  end
+
   def create
     if params[:food_id]
       current_account.orders.create(:date => Date.today, :food_id => params[:food_id], :remark => params[:remark], :priceAdj => params[:priceAdj])
@@ -42,4 +56,5 @@ class OrdersController < ApplicationController
       format.xls {send_data @orders.to_csv(col_sep: "\t") }
     end
   end
+
 end
