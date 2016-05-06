@@ -4,6 +4,7 @@ class Food < ActiveRecord::Base
 
   belongs_to :restaurant
   has_many :accounts, through: :orders
+  belongs_to :food_type
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

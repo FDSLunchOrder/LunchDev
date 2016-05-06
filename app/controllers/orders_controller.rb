@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     if params[:food_id]
       current_account.orders.create(:date => Date.today, :food_id => params[:food_id], :remark => params[:remark], :priceAdj => params[:priceAdj])
     end
-    redirect_to action: "new"
+    redirect_to action: "new", rest_id: params[:rest_id]
   end
 
   def new
@@ -12,7 +12,12 @@ class OrdersController < ApplicationController
       @account = current_account
       @orders = @account.orders.where('date = ?', Date.today)
       @orderedFood = @account.foods.where('date = ?', Date.today)
-      @foods = Food.all
+      @restaurant = Restaurant.all
+
+      if params[:rest_id] != ''
+        @foods = Food.where('restaurant_id = ? and active = 1',params[:rest_id])
+        @foodTypes = FoodType.where('restaurant_id = ?',params[:rest_id])
+      end
     else
       redirect_to root_url
     end

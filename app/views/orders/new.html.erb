@@ -1,7 +1,20 @@
+<script src="/assets/jquery.js" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("[class^='group']").toggle();
+        $("[class^='head']").click(function () {
+            var groupNumber = $(this).attr('class').slice(-1);
+            $('.group'+groupNumber).toggle();
+        });
+    });
+</script>
+
 <div></div>
 Welcome <%= @account.first_name + ' ' + @account.last_name%>, you can make order here!
 
-<% if @account.user_gp=2 %>
+<% if @account.user_gp == 2 %>
     <br><span style="color:red">Since you are using guest account. Please mark down your ID to login again: <%=@account.login%></span><br>
 <% end %>
 
@@ -53,7 +66,16 @@ Current Order:
 
 
 <br>
+Restaurant:
+<% for restaurant in @restaurant %>
+    <br>
+    <%= link_to restaurant.name, new_order_path(:rest_id => restaurant.id) %>
+<% end %>
+<br>
+
+<br>
 Add food:
+<% if @foods.count > 0 %>
 <table>
   <tr>
     <th>Restaurant</th>
@@ -64,20 +86,30 @@ Add food:
     <th>Price Adjustment</th>
   </tr>
 
-  <% for food in @foods %>
-      <tr>
-      <%= form_tag("/orders", method: "post") do %>
-            <td><%= label_tag :restaurantName, food.restaurant.name %></td>
-            <td><%= label_tag :foodName, food.name %></td>
-            <td><%= label_tag :foodName2, food.name2 %></td>
-            <td><%= label_tag :foodPrice, food.price %></td>
-            <td><%= text_field_tag :remark %></td>
-            <td><%= text_field_tag :priceAdj %></td>
-            <td><%= submit_tag "Add", class: "btn btn-primary" %></td>
-            <%= hidden_field_tag :food_id, food.id %>
-      <% end %>
+  <% for foodType in @foodTypes %>
+      <tr class=<%= "head" + foodType.id.to_s %> >
+        <td><%= foodType.name %></td>
+        <td><%= foodType.name2 %></td>
       </tr>
+      <% for food in @foods.where('foodType_id = ?', foodType.id ) %>
+          <tr class=<%= "group" + foodType.id.to_s %> >
+            <%= form_tag("/orders", method: "post") do %>
+                <td><%= label_tag :restaurantName, food.restaurant.name %></td>
+                <td><%= label_tag :foodName, food.name %></td>
+                <td><%= label_tag :foodName2, food.name2 %></td>
+                <td><%= label_tag :foodPrice, food.price %></td>
+                <td><%= text_field_tag :remark %></td>
+                <td><%= text_field_tag :priceAdj %></td>
+                <td><%= submit_tag "Add", class: "btn btn-primary" %></td>
+                <%= hidden_field_tag :food_id, food.id %>
+                <%= hidden_field_tag :rest_id, food.restaurant.id %>
+            <% end %>
+          </tr>
+      <% end %>
   <% end %>
-</table>
+<% else %>
+    Please select a restaurant from the list.<br>
+<% end %>
 
+  </table>
 <br />
